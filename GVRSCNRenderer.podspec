@@ -8,7 +8,9 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/palle-k/GVRSCNRenderer.git', :tag => s.version }
 
   s.ios.deployment_target = '11.0'
+  s.swift_version = '4.0'
 
   s.source_files = 'GVRSCNRenderer/*.swift'
   s.dependency 'GVRKit'
+  s.static_framework = true
 end
