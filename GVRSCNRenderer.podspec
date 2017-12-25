@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'GVRSCNRenderer'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.license = 'MIT'
   s.summary = 'Enables SceneKit Rendering and ARKit 6DOF Tracking for Google Cardboard.'
   s.homepage = 'https://github.com/palle-k/GVRSCNRenderer'
