@@ -7,13 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9D352A052DC9724043082F1 /* Pods_GVRSCNRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7707DF08AE7BA1FF23850482 /* Pods_GVRSCNRenderer.framework */; };
 		E6B00FCF1FF1485000993F05 /* GVRSCNRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B00FCD1FF1485000993F05 /* GVRSCNRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6B00FD61FF1489D00993F05 /* GVRSCNRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B00FD51FF1489D00993F05 /* GVRSCNRenderer.swift */; };
+		E6B00FD81FF148AE00993F05 /* GVRSCNARTrackingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B00FD71FF148AE00993F05 /* GVRSCNARTrackingRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BD9E32B420C1A4C68CB2110 /* Pods-GVRSCNRenderer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GVRSCNRenderer.release.xcconfig"; path = "Pods/Target Support Files/Pods-GVRSCNRenderer/Pods-GVRSCNRenderer.release.xcconfig"; sourceTree = "<group>"; };
+		7707DF08AE7BA1FF23850482 /* Pods_GVRSCNRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GVRSCNRenderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA20AD8B85CE8C0E856E71EE /* Pods-GVRSCNRenderer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GVRSCNRenderer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GVRSCNRenderer/Pods-GVRSCNRenderer.debug.xcconfig"; sourceTree = "<group>"; };
 		E6B00FCA1FF1485000993F05 /* GVRSCNRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GVRSCNRenderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B00FCD1FF1485000993F05 /* GVRSCNRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GVRSCNRenderer.h; sourceTree = "<group>"; };
 		E6B00FCE1FF1485000993F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6B00FD51FF1489D00993F05 /* GVRSCNRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GVRSCNRenderer.swift; sourceTree = "<group>"; };
+		E6B00FD71FF148AE00993F05 /* GVRSCNARTrackingRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GVRSCNARTrackingRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,17 +29,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9D352A052DC9724043082F1 /* Pods_GVRSCNRenderer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F2562E59740985601F99582 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7707DF08AE7BA1FF23850482 /* Pods_GVRSCNRenderer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		703733C2CBD6EF09813A76A2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA20AD8B85CE8C0E856E71EE /* Pods-GVRSCNRenderer.debug.xcconfig */,
+				3BD9E32B420C1A4C68CB2110 /* Pods-GVRSCNRenderer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E6B00FC01FF1485000993F05 = {
 			isa = PBXGroup;
 			children = (
 				E6B00FCC1FF1485000993F05 /* GVRSCNRenderer */,
 				E6B00FCB1FF1485000993F05 /* Products */,
+				703733C2CBD6EF09813A76A2 /* Pods */,
+				6F2562E59740985601F99582 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -48,6 +76,8 @@
 			children = (
 				E6B00FCD1FF1485000993F05 /* GVRSCNRenderer.h */,
 				E6B00FCE1FF1485000993F05 /* Info.plist */,
+				E6B00FD51FF1489D00993F05 /* GVRSCNRenderer.swift */,
+				E6B00FD71FF148AE00993F05 /* GVRSCNARTrackingRenderer.swift */,
 			);
 			path = GVRSCNRenderer;
 			sourceTree = "<group>";
@@ -70,10 +100,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6B00FD21FF1485000993F05 /* Build configuration list for PBXNativeTarget "GVRSCNRenderer" */;
 			buildPhases = (
+				7C637E564ADF43596B2CB1CC /* [CP] Check Pods Manifest.lock */,
 				E6B00FC51FF1485000993F05 /* Sources */,
 				E6B00FC61FF1485000993F05 /* Frameworks */,
 				E6B00FC71FF1485000993F05 /* Headers */,
 				E6B00FC81FF1485000993F05 /* Resources */,
+				B093BBAAE0378F803F0AEEC0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -95,6 +127,7 @@
 				TargetAttributes = {
 					E6B00FC91FF1485000993F05 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -126,11 +159,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7C637E564ADF43596B2CB1CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GVRSCNRenderer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B093BBAAE0378F803F0AEEC0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GVRSCNRenderer/Pods-GVRSCNRenderer-resources.sh",
+				"${PODS_ROOT}/GVRSDK/Resources/CardboardSDK.bundle",
+				"${PODS_ROOT}/GVRSDK/Resources/GoogleKitCore.bundle",
+				"${PODS_ROOT}/GVRSDK/Resources/GoogleKitDialogs.bundle",
+				"${PODS_ROOT}/GVRSDK/Resources/GoogleKitHUD.bundle",
+				"${PODS_ROOT}/GVRSDK/Resources/MaterialRobotoFontLoader.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GVRSCNRenderer/Pods-GVRSCNRenderer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E6B00FC51FF1485000993F05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6B00FD61FF1489D00993F05 /* GVRSCNRenderer.swift in Sources */,
+				E6B00FD81FF148AE00993F05 /* GVRSCNARTrackingRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +330,9 @@
 		};
 		E6B00FD31FF1485000993F05 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA20AD8B85CE8C0E856E71EE /* Pods-GVRSCNRenderer.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -266,6 +346,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.palleklewitz.GVRSCNRenderer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -273,7 +354,9 @@
 		};
 		E6B00FD41FF1485000993F05 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BD9E32B420C1A4C68CB2110 /* Pods-GVRSCNRenderer.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
