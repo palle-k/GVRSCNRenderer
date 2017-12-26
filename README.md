@@ -8,10 +8,10 @@ Combines Google Cardboard with SceneKit Rendering and ARKit 6DOF World Tracking.
 
 ## Installation
 
-Installation using CocoaPods is currently unavailable, as static libraries are required, which are incompatible with Swift Pods.
-The pod will be available when CocoaPods 1.4 is released, which adds support for static swift libraries.
+Installation using CocoaPods from the Spec repository is currently unavailable, as static libraries are required, which are incompatible with Swift Pods.
+The pod will be made available when CocoaPods 1.4 is released, which adds support for static swift libraries.
 
-To use this library using CocoaPods, update to 1.4 using `gem install cocoapods --pre` and use this library as a development pod:
+To import this library using CocoaPods right now, update to 1.4 using `gem install cocoapods --pre` and add it as a development pod:
 
 ```ruby
 target 'Your-App-Name' do
