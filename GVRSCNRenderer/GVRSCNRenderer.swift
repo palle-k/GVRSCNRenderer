@@ -27,6 +27,10 @@ import Foundation
 import GVRKit
 import SceneKit
 
+public protocol GVRSCNInteractionDelegate: class {
+	func didTrigger(_ renderer: GVRSCNRenderer, headTransform: SCNMatrix4)
+}
+
 
 open class GVRSCNRenderer: GVRRenderer {
 	public private(set) var renderers: [SCNRenderer] = []
@@ -38,7 +42,19 @@ open class GVRSCNRenderer: GVRRenderer {
 		}
 	}
 	
-	init(scene: SCNScene) {
+	public private(set) var currentHeadTransform: SCNMatrix4?
+	
+	open weak var interactionDelegate: GVRSCNInteractionDelegate?
+	
+	public weak var rendererDelegate: SCNSceneRendererDelegate? {
+		didSet {
+			renderers.forEach { renderer in
+				renderer.delegate = rendererDelegate
+			}
+		}
+	}
+	
+	public init(scene: SCNScene) {
 		self.scene = scene
 		
 		super.init()
@@ -50,7 +66,7 @@ open class GVRSCNRenderer: GVRRenderer {
 		cameraNode.camera = SCNCamera()
 		renderer.pointOfView = cameraNode
 		renderer.scene = scene
-		
+		renderer.delegate = rendererDelegate
 		return renderer
 	}
 	
@@ -62,6 +78,8 @@ open class GVRSCNRenderer: GVRRenderer {
 	
 	open override func clearGl() {
 		super.clearGl()
+		
+		currentHeadTransform = nil
 		renderers.removeAll()
 	}
 	
@@ -70,7 +88,14 @@ open class GVRSCNRenderer: GVRRenderer {
 	}
 	
 	open override func handleTrigger(_ headPose: GVRHeadPose!) -> Bool {
-		return super.handleTrigger(headPose)
+		super.handleTrigger(headPose)
+		
+		if let delegate = self.interactionDelegate {
+			delegate.didTrigger(self, headTransform: SCNMatrix4FromGLKMatrix4(transform(for: headPose)))
+			return true
+		} else {
+			return false
+		}
 	}
 	
 	open override func resetHeadRotation() {
@@ -79,6 +104,8 @@ open class GVRSCNRenderer: GVRRenderer {
 	
 	open override func update(_ headPose: GVRHeadPose!) {
 		super.update(headPose)
+		
+		currentHeadTransform = SCNMatrix4FromGLKMatrix4(self.transform(for: headPose))
 		
 		glClearColor(0, 0, 0, 1)
 		glEnable(GLenum(GL_DEPTH_TEST))
@@ -107,11 +134,11 @@ open class GVRSCNRenderer: GVRRenderer {
 		glClear(GLbitfield(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT))
 		
 		let renderer = renderers[eye.rawValue]
-		let projectionMatrix = headPose.projectionMatrix(withNear: 0.1, far: 100.0)
+		let projectionMatrix = headPose.projectionMatrix(withNear: 0.01, far: 100.0)
 		
 		renderer.pointOfView?.camera?.projectionTransform = SCNMatrix4FromGLKMatrix4(projectionMatrix)
 		
-		let arTransform = getTransform(headPose: headPose)
+		let arTransform = transform(for: headPose)
 		
 		let localEyeTransform = headPose.eyeTransform
 		let localEyeLocation = GLKMatrix4GetColumn(localEyeTransform, 3)
@@ -126,7 +153,7 @@ open class GVRSCNRenderer: GVRRenderer {
 		}
 	}
 	
-	open func getTransform(headPose: GVRHeadPose) -> GLKMatrix4 {
+	open func transform(for headPose: GVRHeadPose) -> GLKMatrix4 {
 		return GLKMatrix4Transpose(headPose.headTransform)
 	}
 }

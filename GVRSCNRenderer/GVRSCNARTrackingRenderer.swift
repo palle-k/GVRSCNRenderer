@@ -32,8 +32,22 @@ open class GVRSCNARTrackingRenderer: GVRSCNRenderer, ARSessionDelegate {
 	public let session: ARSession
 	
 	open var showsTrackingFeatures: Bool
+	open var trackingFeatureSize: CGFloat = 0.005
+	open lazy var trackingFeatureMaterial: SCNMaterial = {
+		let material = SCNMaterial()
+		material.diffuse.contents = UIColor.yellow
+		material.specular.contents = UIColor.black
+		return material
+	}()
+	
 	private let featureRoot: SCNNode = SCNNode()
 	private var features: [UInt64: SCNNode] = [:]
+	
+	open override var scene: SCNScene {
+		didSet {
+			featureRoot.removeFromParentNode()
+		}
+	}
 	
 	public override init(scene: SCNScene) {
 		session = ARSession()
@@ -42,16 +56,8 @@ open class GVRSCNARTrackingRenderer: GVRSCNRenderer, ARSessionDelegate {
 		super.init(scene: scene)
 	}
 	
-	open override func refresh() {
-		super.refresh()
-		
-		//FIXME: Tracking lost when pairing a new cardboard, this method is not called
-	}
-	
 	open override func pause(_ pause: Bool) {
 		super.pause(pause)
-		
-		print(pause ? "pause" : "unpause")
 		if pause {
 			session.pause()
 		} else {
@@ -72,11 +78,8 @@ open class GVRSCNARTrackingRenderer: GVRSCNRenderer, ARSessionDelegate {
 				guard self.features[id] == nil else {
 					continue
 				}
-				let plane = SCNPlane(width: 0.002, height: 0.002)
-				let material = SCNMaterial()
-				material.diffuse.contents = UIColor.yellow
-				material.specular.contents = UIColor.black
-				plane.materials = [material]
+				let plane = SCNPlane(width: trackingFeatureSize, height: trackingFeatureSize)
+				plane.materials = [trackingFeatureMaterial]
 				
 				let node = SCNNode(geometry: plane)
 				node.simdPosition = point
@@ -98,7 +101,7 @@ open class GVRSCNARTrackingRenderer: GVRSCNRenderer, ARSessionDelegate {
 		}
 	}
 	
-	open override func getTransform(headPose: GVRHeadPose) -> GLKMatrix4 {
+	open override func transform(for headPose: GVRHeadPose) -> GLKMatrix4 {
 		return SCNMatrix4ToGLKMatrix4(SCNMatrix4(session.currentFrame?.camera.transform ?? matrix_identity_float4x4))
 	}
 }
