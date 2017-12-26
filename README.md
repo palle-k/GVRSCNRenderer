@@ -1,7 +1,5 @@
 # GVRSCNRenderer
 
-[![CocoaPods](https://img.shields.io/cocoapods/v/GVRSCNRenderer.svg)](https://cocoapods.org/pods/GVRSCNRenderer)
-![CocoaPods](https://img.shields.io/cocoapods/p/GVRSCNRenderer.svg)
 [![license](https://img.shields.io/github/license/palle-k/GVRSCNRenderer.svg)](https://github.com/palle-k/GVRSCNRenderer/blob/master/LICENSE)
 
 Combines Google Cardboard with SceneKit Rendering and ARKit 6DOF World Tracking.
@@ -10,12 +8,19 @@ Combines Google Cardboard with SceneKit Rendering and ARKit 6DOF World Tracking.
 
 ## Installation
 
-Using CocoaPods:
+Installation using CocoaPods is currently unavailable, as static libraries are required, which are incompatible with Swift Pods.
+The pod will be available when CocoaPods 1.4 is released, which adds support for static swift libraries.
+
+To use this library using CocoaPods, update to 1.4 using `gem install cocoapods --pre` and use this library as a development pod:
+
+1. Clone this repository
+
+2. Add this library as a development pod:
 
 ```ruby
 target 'Your-App-Name' do
   use_frameworks!
-  pod 'GVRSCNRenderer'
+  pod 'GVRSCNRenderer', :path => '/path/to/GVRSCNRenderer/'
 end
 ```
 
