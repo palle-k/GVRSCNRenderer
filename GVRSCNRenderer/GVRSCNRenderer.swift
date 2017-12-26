@@ -60,8 +60,8 @@ open class GVRSCNRenderer: GVRRenderer {
 		super.init()
 	}
 	
-	private func makeRenderer() -> SCNRenderer {
-		let renderer = SCNRenderer(context: EAGLContext.current(), options: nil)
+	open func makeRenderer(context: EAGLContext) -> SCNRenderer {
+		let renderer = SCNRenderer(context: context, options: nil)
 		let cameraNode = SCNNode()
 		cameraNode.camera = SCNCamera()
 		renderer.pointOfView = cameraNode
@@ -73,7 +73,10 @@ open class GVRSCNRenderer: GVRRenderer {
 	open override func initializeGl() {
 		super.initializeGl()
 		
-		renderers = [makeRenderer(), makeRenderer(), makeRenderer()]
+		guard let context = EAGLContext.current() else {
+			return
+		}
+		renderers = [makeRenderer(context: context), makeRenderer(context: context), makeRenderer(context: context)]
 	}
 	
 	open override func clearGl() {
