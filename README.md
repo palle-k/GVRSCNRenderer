@@ -2,7 +2,8 @@
 
 [![license](https://img.shields.io/github/license/palle-k/GVRSCNRenderer.svg)](https://github.com/palle-k/GVRSCNRenderer/blob/master/LICENSE)
 
-Combines Google Cardboard with SceneKit Rendering and ARKit 6DOF World Tracking.
+Combines Google Cardboard with SceneKit Rendering and ARKit World Tracking.  
+Combining ARKit with Google Cardboard enables six degrees of freedom (rotation and translation) in VR:
 
 ![Cardboard+ARKit](https://raw.githubusercontent.com/palle-k/GVRSCNRenderer/master/img/cardboard-arkit.gif)
 
