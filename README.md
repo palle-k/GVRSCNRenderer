@@ -13,14 +13,10 @@ The pod will be available when CocoaPods 1.4 is released, which adds support for
 
 To use this library using CocoaPods, update to 1.4 using `gem install cocoapods --pre` and use this library as a development pod:
 
-1. Clone this repository
-
-2. Add this library as a development pod:
-
 ```ruby
 target 'Your-App-Name' do
   use_frameworks!
-  pod 'GVRSCNRenderer', :path => '/path/to/GVRSCNRenderer/'
+  pod 'GVRSCNRenderer', :git => 'https://github.com/palle-k/GVRSCNRenderer.git'
 end
 ```
 
