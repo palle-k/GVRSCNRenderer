@@ -9,9 +9,6 @@ Combining ARKit with Google Cardboard enables six degrees of freedom (rotation a
 
 ## Installation
 
-Installation using CocoaPods from the Spec repository is currently unavailable, as static libraries are required, which are incompatible with Swift Pods.
-The pod will be made available when CocoaPods 1.4 is released, which adds support for static swift libraries.
-
 To import this library using CocoaPods right now, update to 1.4 using `gem install cocoapods --pre` and add it as a development pod:
 
 ```ruby
@@ -20,6 +17,8 @@ target 'Your-App-Name' do
   pod 'GVRSCNRenderer', :git => 'https://github.com/palle-k/GVRSCNRenderer.git'
 end
 ```
+
+(Installation directly from the pod spec repo is currently unavailable, as it is not possible to create Swift pods with static library dependencies with CocoaPods 1.3 or earlier)
 
 ## Usage
 
