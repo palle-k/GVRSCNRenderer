@@ -1,6 +1,5 @@
 # GVRSCNRenderer
 
-[![license](https://img.shields.io/github/license/palle-k/GVRSCNRenderer.svg)](https://github.com/palle-k/GVRSCNRenderer/blob/master/LICENSE)
 [![CocoaPods](https://img.shields.io/cocoapods/v/GVRSCNRenderer.svg)](https://cocoapods.org/pods/GVRSCNRenderer)
 ![CocoaPods](https://img.shields.io/cocoapods/p/GVRSCNRenderer.svg)
 [![license](https://img.shields.io/github/license/palle-k/GVRSCNRenderer.svg)](https://github.com/palle-k/GVRSCNRenderer/blob/master/License)
